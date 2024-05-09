@@ -1,6 +1,6 @@
 [submodule "difficalcy"]
 	path = difficalcy
-	url = git@github.com:Syriiin/difficalcy.git
+	url = git@github.com:cdwcgt/difficalcy.git
 [submodule "osu"]
 	path = osu
 	url = git@github.com:Syriiin/osu.git
