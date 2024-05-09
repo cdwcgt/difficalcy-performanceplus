@@ -1,10 +1,10 @@
 services:
   difficalcy-performanceplus:
     ports:
-      - 5004:80
+      - ${port}:80
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
 
   docs:
     ports:
-      - 8001:8000
+      - ${docs_port}:8000
