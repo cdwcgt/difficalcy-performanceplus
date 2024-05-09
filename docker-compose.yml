@@ -4,11 +4,12 @@ services:
       context: .
       target: difficalcy-performanceplus
       args:
-        - OSU_COMMIT_HASH
+        OSU_COMMIT_HASH: e6fc95d77047d18ae7f2c3f3571d66f091938c37
     environment:
       - REDIS_CONFIGURATION=cache:6379
+      - ASPNETCORE_ENVIRONMENT=Production
     volumes:
-      - beatmaps:/beatmaps
+      - ./beatmaps:/beatmaps
     depends_on:
       - cache
 
@@ -23,5 +24,4 @@ services:
       - ./docs:/docs
 
 volumes:
-  beatmaps:
   redis-data:
