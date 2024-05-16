@@ -13,16 +13,16 @@ namespace Difficalcy.PerformancePlus.Services
     {
         private readonly Beatmap _beatmap;
 
-        public CalculatorWorkingBeatmap(Ruleset ruleset, Stream beatmapStream, string beatmapId) : this(ruleset, readFromStream(beatmapStream), beatmapId) { }
+        public CalculatorWorkingBeatmap(Ruleset ruleset, Stream beatmapStream) : this(ruleset, ReadFromStream(beatmapStream)) { }
 
-        private CalculatorWorkingBeatmap(Ruleset ruleset, Beatmap beatmap, string beatmapId) : base(beatmap.BeatmapInfo, null)
+        private CalculatorWorkingBeatmap(Ruleset ruleset, Beatmap beatmap) : base(beatmap.BeatmapInfo, null)
         {
             _beatmap = beatmap;
 
             _beatmap.BeatmapInfo.Ruleset = ruleset.RulesetInfo;
         }
 
-        private static Beatmap readFromStream(Stream stream)
+        private static Beatmap ReadFromStream(Stream stream)
         {
             using var reader = new LineBufferedReader(stream);
             return Decoder.GetDecoder<Beatmap>(reader).Decode(reader);
