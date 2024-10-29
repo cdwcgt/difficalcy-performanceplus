@@ -29,6 +29,9 @@ start-dev: build-dev	## Starts development environment
 clean-dev:	## Cleans development environment
 	$(COMPOSE_APP_DEV) down --remove-orphans
 
+reset-dev:	## Resets development environment
+	$(COMPOSE_APP_DEV) down --remove-orphans --volumes
+
 update-api-reference:	## Updates OpenAPI schemas in docs site
 	$(COMPOSE_TOOLING_RUN) scripts/update-api-reference.sh
 
@@ -52,6 +55,9 @@ ifndef GITHUB_USERNAME
 endif
 ifneq "$(shell git branch --show-current)" "master"
 	$(error This command can only be run on the master branch)
+endif
+ifneq "$(shell git diff --name-only master)" ""
+	$(error There are uncommitted changes in the working directory)
 endif
 	echo $$GITHUB_PAT | docker login ghcr.io --username $$GITHUB_USERNAME --password-stdin
 	VERSION=$(VERSION) $(COMPOSE_PUBLISH) build
