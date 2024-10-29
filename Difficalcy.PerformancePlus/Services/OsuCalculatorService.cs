@@ -7,6 +7,7 @@ using Difficalcy.Models;
 using Difficalcy.PerformancePlus.Models;
 using Difficalcy.Services;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using osu.Game.Beatmaps.Legacy;
 using osu.Game.Rulesets.Osu;
 using osu.Game.Rulesets.Osu.Difficulty;
@@ -21,7 +22,7 @@ namespace Difficalcy.PerformancePlus.Services
         private readonly IBeatmapProvider beatmapProvider;
         private readonly string osuCommitHash;
 
-        public OsuCalculatorService(ICache cache, IBeatmapProvider beatmapProvider, IConfiguration configuration) : base(cache)
+        public OsuCalculatorService(ICache cache, IBeatmapProvider beatmapProvider, IConfiguration configuration, ILogger<OsuCalculatorService> logger) : base(cache, logger)
         {
             this.beatmapProvider = beatmapProvider;
             osuCommitHash = configuration["OSU_COMMIT_HASH"];
