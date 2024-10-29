@@ -1,7 +1,7 @@
 [submodule "difficalcy"]
 	path = difficalcy
 	url = git@github.com:cdwcgt/difficalcy.git
-	branch = master
+	branch = custom
 [submodule "osu"]
 	path = osu
 	url = git@github.com:Syriiin/osu.git
