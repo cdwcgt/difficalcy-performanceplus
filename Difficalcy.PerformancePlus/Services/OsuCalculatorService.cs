@@ -160,7 +160,7 @@ namespace Difficalcy.PerformancePlus.Services
         {
             var apiMod = new APIMod { Acronym = mod.Acronym };
             foreach (var setting in mod.Settings)
-                apiMod.Settings.Add(setting.Key, setting.Value);
+                apiMod.Settings.Add(setting.Key, setting.Value.ToString());
 
             return apiMod.ToMod(OsuRuleset);
         }
